@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vervis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <script src="{{ url_for('static', filename='js/signup.js') }}" defer></script>
+  <!-- Font Awesome for eye icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Create Account</h2>
+
+    <!-- ✅ Added action & method -->
+    <form id="signupForm" action="{{ url_for('signup') }}" method="POST">
+      <input type="text" id="username" name="username" placeholder="Username" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+
+      <!-- Password -->
+      <div class="password-container">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <i class="fa-solid fa-eye password-toggle" onclick="togglePassword('password', this)"></i>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="password-container">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        <i class="fa-solid fa-eye password-toggle" onclick="togglePassword('confirmPassword', this)"></i>
+      </div>
+
+      <button type="submit">Sign Up</button>
+      <p id="errorMsg" class="error"></p>
+    </form>
+
+    <p>Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+  
+</body>
+</html>

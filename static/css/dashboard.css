@@ -1,0 +1,523 @@
+/* ---------------------------------------------------
+   VERVIS MASTER COLOR PALETTE
+--------------------------------------------------- */
+:root {
+  --bg-main: #f4f7f9;          /* Soft, light gray-blue for the main background */
+  --bg-surface: #ffffff;       /* Pure white for cards and containers */
+  --bg-surface-alt: #f8fafc;   /* Slightly off-white for secondary buttons/inputs */
+  
+  --text-main: #333333;        /* Dark gray for easy readability */
+  --text-muted: #666666;       /* Lighter gray for secondary text */
+  
+  --primary-accent: #3498db;   /* The signature Vervis bright blue */
+  --primary-hover: #2980b9;    /* Slightly darker blue for button hovers */
+  --dark-header: #2c3e50;      /* Deep slate blue for H1/H2 headers */
+  
+  --success-green: #00e5a0;    /* The ML translation success color */
+  --danger-red: #e74c3c;       /* For stop/delete buttons */
+
+  /* UI Utilities */
+  --border: #e2e8f0;           /* Light border color */
+  --border-hover: #cbd5e1;     /* Darker border for hovers */
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  background: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background-image: 
+    linear-gradient(rgba(44, 62, 80, 0.6), rgba(10, 10, 15, 0.8)),
+    url('../images/dashboard.jpg');
+  background-size: cover;          /* Ensures the image fills the screen */
+  background-position: center;     /* Keeps the image centered */
+  background-attachment: fixed;    /* Prevents the image from scrolling (Parallax effect) */
+  background-repeat: no-repeat;  
+  background-attachment: fixed;
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
+.dashboard-container {
+  background-color: rgba(255, 255, 255, 0.45); /* Frosted glass effect for light mode */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Softened the shadow for light mode */
+  width: 100%;
+  max-width: 520px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  /* Changed from dark mode to frosted glass light mode */
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 50;
+}
+
+.header h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  /* Updated gradient to use Vervis Blue and Deep Slate */
+  background: linear-gradient(90deg, var(--primary-accent), var(--dark-header));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-btn,
+.logout-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-btn {
+  background: rgba(52, 152, 219, 0.1);
+  color: var(--primary-hover);
+  border: 1px solid rgba(52, 152, 219, 0.25);
+}
+.admin-btn:hover { background: rgba(52, 152, 219, 0.2); }
+
+.logout-btn {
+  background: rgba(231, 76, 60, 0.08);
+  color: var(--danger-red);
+  border: 1px solid rgba(231, 76, 60, 0.18);
+}
+.logout-btn:hover { background: rgba(231, 76, 60, 0.18); }
+
+/* ═══════════════════════════════════════════════════════
+   WELCOME
+   ═══════════════════════════════════════════════════════ */
+.welcome {
+  padding: 28px 24px 20px;
+}
+
+.welcome h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dark-header);
+  margin-bottom: 4px;
+}
+
+.welcome > p {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.status-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#micStatus {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+#transcriptOutput {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  word-break: break-word;
+}
+#transcriptOutput:empty { display: none; }
+
+/* ═══════════════════════════════════════════════════════
+   ACTION BUTTONS
+   ═══════════════════════════════════════════════════════ */
+.quick-suggestions {
+  padding: 0 24px 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.quick-suggestions button {
+  flex: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 13px 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#speechToTextBtn {
+  background: var(--bg-surface-alt);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+#speechToTextBtn:hover {
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+}
+
+#translateSLBtn {
+  background: var(--primary-accent);
+  color: #ffffff;
+}
+#translateSLBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SIGN LANGUAGE AREA (dashboard view — before webcam)
+   ═══════════════════════════════════════════════════════ */
+.sl-translation-area {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Placeholder box shown before webcam starts */
+#media-preview-container {
+  width: 100%;
+  min-height: 180px;
+  background: var(--bg-surface-alt);
+  border: 1px dashed var(--border-hover);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+}
+
+#media-preview-container:empty::after {
+  content: 'Webcam will go fullscreen when started';
+}
+
+/* Status output (shown on dashboard, not in fullscreen mode) */
+#slOutput {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 14px;
+  color: var(--text-muted);
+  min-height: 52px;
+  line-height: 1.6;
+  transition: all 0.25s;
+  word-break: break-word;
+}
+
+#slOutput.detecting {
+  border-color: rgba(52, 152, 219, 0.35); /* Vervis Blue glow */
+  color: var(--primary-accent);
+}
+
+#slOutput.confirmed {
+  border-color: var(--success-green);
+  background: rgba(0, 229, 160, 0.07);
+  color: #00b37e; /* Slightly darker green for text readability on white */
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GESTURE REFERENCE
+   ═══════════════════════════════════════════════════════ */
+.gesture-hints {
+  padding: 0 24px 28px;
+}
+
+.gesture-hints-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.gesture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.gesture-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 10px 12px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.gesture-card:hover { border-color: var(--primary-accent); }
+
+.gesture-card .emoji {
+  font-size: 26px;
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.gesture-card .label {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.gesture-card .phrase {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-hover);
+  margin-top: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BOTTOM NAV
+   ═══════════════════════════════════════════════════════ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 520px;
+  /* Changed from dark mode to frosted glass light mode */
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0 16px;
+  z-index: 100;
+}
+
+.bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  transition: color 0.2s;
+  padding: 4px 24px;
+}
+
+.bottom-nav a i { font-size: 18px; }
+.bottom-nav a.active,
+.bottom-nav a:hover { color: var(--primary-accent); }
+
+/* ═══════════════════════════════════════════════════════
+   SOURCE MODAL (bottom sheet)
+   ═══════════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Lighter shadow for light mode */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  padding: 0 12px 12px;
+}
+
+.modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 24px 24px 16px 16px;
+  padding: 36px 24px 32px;
+  width: 100%;
+  max-width: 496px;
+  position: relative;
+}
+
+.modal-content h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark-header);
+  margin-bottom: 6px;
+}
+
+.modal-content > p {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-btn {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-surface-alt);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.modal-btn i {
+  font-size: 18px;
+  color: var(--primary-accent);
+  width: 22px;
+  flex-shrink: 0;
+}
+
+.modal-btn:hover {
+  border-color: var(--primary-accent);
+  background: rgba(52, 152, 219, 0.05);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px;
+}
+.modal-close-btn:hover { color: var(--danger-red); }
+
+/* ═══════════════════════════════════════════════════════
+   FULLSCREEN TEXT OVERLAY (speech translation results)
+   ═══════════════════════════════════════════════════════ */
+.fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 62, 80, 0.95); /* Deep slate blue overlay instead of pure black */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  cursor: pointer;
+}
+
+.fullscreen-close-btn {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  font-size: 40px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+  user-select: none;
+}
+.fullscreen-close-btn:hover { color: #ffffff; }
+
+.fullscreen-text-content {
+  text-align: center;
+  padding: 32px;
+  animation: popIn 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.82); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+#fullscreen-text-p {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(52px, 13vw, 108px);
+  font-weight: 800;
+  line-height: 1.1;
+  /* Updated gradient to use Vervis brand colors */
+  background: linear-gradient(135deg, #ffffff 20%, var(--primary-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  word-break: break-word;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .quick-suggestions { flex-direction: column; }
+  .gesture-grid { grid-template-columns: repeat(2, 1fr); }
+}

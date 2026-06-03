@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vervis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <!-- Font Awesome for eye icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Log In</h2>
+
+    <!-- ✅ Added action & method -->
+    <form id="loginForm" action="{{ url_for('login') }}" method="POST">
+      <input type="text" id="username" name="username" placeholder="Username" required>
+
+      <!-- Password -->
+      <div class="password-container">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <i class="fa-solid fa-eye password-toggle" onclick="togglePassword('password', this)"></i>
+      </div>
+
+      <button type="submit">Log In</button>
+      <p id="errorMsg" class="error"></p>
+    </form>
+
+    <p>Don’t have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+    <div class="social-login">
+  <p>Or</p>
+  <a href="{{ url_for('login_google') }}" class="google-btn">
+    <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" style="height:20px; width:20px;" />
+    Continue with Google
+</a>
+
+</div>
+  </div>
+
+
+  <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+  
+</body>
+</html>

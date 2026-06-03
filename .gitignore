@@ -1,0 +1,20 @@
+# Virtual Environments
+.env
+mp_env/
+venv/
+
+# PyInstaller Build Files
+build/
+dist/
+*.spec
+
+# Database
+vervis.db
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# ML Models & Data (Optional: remove these two if you WANT to push them, but they are heavy)
+# custom_gesture_model.pkl
+# gesture_dataset.csv

@@ -1,0 +1,25 @@
+{
+    "admin": {
+        "password": "Admin@123",
+        "role": "admin",
+        "email": "admin@gmail.com",
+        "language": "en",
+        "responsePreference": "text"
+    },
+    "peteronegi006": {
+        "password": "",
+        "role": "user",
+        "email": "peteronegi006@gmail.com",
+        "language": "en",
+        "responsePreference": "text",
+        "primary": false
+    },
+    "Omollo": {
+        "password": "Peteromollo@001",
+        "role": "user",
+        "email": "Peteronegi006@gmail.com",
+        "language": "sw",
+        "responsePreference": "both",
+        "primary": false
+    }
+}

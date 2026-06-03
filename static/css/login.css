@@ -1,0 +1,143 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Use the same overlay and image */
+  background-image: 
+    linear-gradient(rgba(44, 62, 80, 0.6), rgba(10, 10, 15, 0.8)), 
+    url('../images/login_signup.jpg');
+    
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Match what’s in your HTML (form-container instead of container) */
+.form-container {
+  background-color: rgba(255, 255, 255, 0.45); /* Frosted glass effect for light mode */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 350px; /* consistent fixed width */
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: #0099ff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background: #007acc;
+}
+
+p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+p a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/* Highlight invalid inputs */
+input.invalid {
+  border: 2px solid red;
+  outline: none;
+}
+
+/* Password field container */
+.password-container {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* reserve space for 👁 */
+  box-sizing: border-box;
+}
+
+/* Eye icon button */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+}
+.social-login {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #555;
+  font-weight: bold;
+}
+
+.google-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.google-btn:hover {
+  background: #f1f1f1;
+}
+

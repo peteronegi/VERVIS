@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vervis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+<body>
+
+  <div class="container" id="settings-container"
+       data-username="{{ session['username'] }}"
+       data-role="{{ session['role'] }}">
+
+    <a href="{{ url_for('dashboard') }}" class="return-dashboard-btn" title="Back to Dashboard">
+    <i class="fa-solid fa-house"></i>
+  </a>
+
+    <h2>User Settings</h2>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-target="profile-tab">Profile</div>
+      <div class="tab" data-target="translation-tab">Translation</div>
+      <div class="tab" data-target="response-tab">Response</div>
+      {% if session['role'] == 'admin' %}
+        <div class="tab" data-target="admin-tab">Admin</div>
+      {% endif %}
+    </div>
+
+    <!-- Profile Tab -->
+    <div id="profile-tab" class="tab-content active">
+      <div class="section">
+        <h3>Account Information</h3>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter email">
+
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+
+        <label for="password">New Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Enter new password">
+          <i id="toggle-password" class="fa-solid fa-eye"></i>
+        </div>
+
+        <label for="confirm-password">Confirm Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="confirm-password" placeholder="Confirm new password">
+          <i id="toggle-confirm-password" class="fa-solid fa-eye"></i>
+        </div>
+
+        <div id="password-strength" class="message"></div>
+
+        <button id="save-profile">Save Profile</button>
+        <div class="message" id="profile-message"></div>
+      </div>
+    </div>
+
+    <!-- Translation Tab -->
+    <div id="translation-tab" class="tab-content">
+      <h3>Translation Settings</h3>
+      <label for="language">Translate to...</label>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="sw">Swahili</option>
+        <option value="fr">French</option>
+      </select>
+      <button id="save-translation">Save Language</button>
+      <div class="message" id="translation-message"></div>
+    </div>
+
+    <!-- Response Preferences Tab -->
+    <div id="response-tab" class="tab-content">
+      <h3>Response Preferences</h3>
+      <label><input type="radio" name="response-type" value="text"><span>Text Only</span></label>
+      <label><input type="radio" name="response-type" value="voice"><span>Voice Only</span></label>
+      <label><input type="radio" name="response-type" value="both"><span>Both Text and Voice</span></label>
+      <button id="save-response">Save Preference</button>
+      <div class="message" id="response-message"></div>
+    </div>
+
+    <!-- Admin Tab (only visible to admins) -->
+    {% if session['role'] == 'admin' %}
+    <div id="admin-tab" class="tab-content">
+      <h3>Admin Panel - Manage Users</h3>
+      <table id="users-table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- User rows will be populated via JS -->
+        </tbody>
+      </table>
+      <div class="message" id="admin-message"></div>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+</body>
+</html>

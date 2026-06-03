@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vervis - User Manual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/help.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+<body>
+
+    <div class="manual-container">
+        <a href="{{ url_for('dashboard') }}" class="back-btn">&larr; Back to Dashboard</a>
+        
+        <h1>Vervis User Manual</h1>
+        <p>Welcome to Vervis! This guide will help you set up your camera, understand how to perform gestures, and troubleshoot any issues you might encounter while using the real-time translation system.</p>
+
+        <hr>
+
+        <h2>1. Getting Started</h2>
+        <h3>Camera Setup</h3>
+        <ul>
+            <li><strong>Lighting:</strong> Ensure you are in a well-lit room. The system needs to clearly see the outline of your hand. Avoid sitting with a bright window directly behind you (backlighting).</li>
+            <li><strong>Positioning:</strong> Sit comfortably in front of your camera. Your hand should be clearly visible within the video frame on your screen, ideally centered.</li>
+            <li><strong>Background:</strong> A plain, uncluttered background helps the artificial intelligence focus purely on your hand movements.</li>
+        </ul>
+
+        <h3>Starting Translation</h3>
+        <ol>
+            <li>Navigate to the <strong>Dashboard</strong>.</li>
+            <li>If prompted by your browser, click <strong>"Allow"</strong> to grant Vervis access to your webcam.</li>
+            <li>Once the video feed appears, hold up your hand. You should see colored lines (a digital skeleton) drawn over your fingers. This means the system is actively tracking you!</li>
+        </ol>
+
+        <hr>
+
+        <h2>2. How to Perform Gestures</h2>
+        <div class="alert">
+            <strong>Important:</strong> Vervis currently translates specific, one-handed custom gestures. It requires clear, deliberate movements to translate accurately.
+        </div>
+        
+        <p>To perform a gesture:</p>
+        <ul>
+            <li>Hold your hand up clearly in the center of the camera view.</li>
+            <li>Form the gesture (e.g., a Closed Fist for "Stop").</li>
+            <li><strong>Hold the gesture steady for 1-2 seconds.</strong> The system is designed to ignore fast, blurry movements and only translate when it is confident.</li>
+            <li>Once recognized, the translated text will appear on your screen immediately.</li>
+        </ul>
+
+        <h3>Supported Gestures (Current Prototype):</h3>
+        <ul>
+            <li><strong>Closed Fist:</strong> Translates to "Stop"</li>
+            <li><strong>Peace Sign (Index and Middle finger up):</strong> Translates to "Good afternoon"</li>
+            <li><strong>Pointing Up (Index finger up):</strong> Translates to "Hey there!"</li>
+            <li><strong>Open Palm:</strong> Translates to "Hello!"</li>
+            <li><strong>Thumbs Up:</strong> Translates to "Great job!"</li>
+            <li><strong>Thumbs Down:</strong> Translates to "Not good!"</li>
+            <li><strong>Horned Hand:</strong> Translates to "I love you!"</li>
+            <li><strong>Call Me Hand:</strong> Translates to "Call me maybe?"</li>
+            <li><strong>Okay Sign:</strong> Translates to "Okay!"</li>
+            <li><strong>Solidarity Hand:</strong> Translates to "Solidarity!"</li>
+        </ul>
+
+        <hr>
+
+        <h2>3. Multilingual Translation</h2>
+        <p>Vervis can instantly translate your gestures into different spoken languages.</p>
+        <ol>
+            <li>Go to your <strong>Settings</strong> page.</li>
+            <li>Select your preferred output language (English, Swahili, or French).</li>
+            <li>Save your settings and return to the Dashboard. All future gestures will automatically appear in your chosen language!</li>
+        </ol>
+
+        <hr>
+
+        <h2>4. Troubleshooting & FAQ</h2>
+        
+        <p class="faq-question">Q: The camera isn't turning on. The screen is black.</p>
+        <p>A: Check that your browser hasn't blocked camera access. Look for a small camera icon in the URL address bar (usually on the right side) and ensure it is set to "Allow". If you are using external software like DroidCam, ensure the DroidCam app is running on your phone before opening Vervis.</p>
+
+        <p class="faq-question">Q: The colored lines aren't appearing on my hand.</p>
+        <p>A: This usually means the room is too dark, or you are moving your hand too fast. Ensure your hand is well-lit and hold it steady in the center of the screen.</p>
+
+        <p class="faq-question">Q: The system isn't recognizing my Peace Sign or Pointing.</p>
+        <p>A: Ensure your fingers are facing directly toward the camera lens. If your hand is angled too far to the side, the AI cannot accurately calculate the depth of your fingers. Try slightly adjusting the angle of your wrist.</p>
+
+        <p class="faq-question">Q: It keeps translating the wrong word.</p>
+        <p>A: Make sure you are only making the gesture when you intend to translate. If you are resting your hand near your face or making casual movements, the AI might misinterpret it. Lower your hand out of the camera view when you are not actively signing.</p>
+
+        <p class="faq-question">Q: The video feed is lagging or freezing.</p>
+        <p>A: Close any other heavy applications running on your computer. Vervis processes complex mathematics locally on your machine, so it requires available processing power.</p>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vervis — Real-time Translator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+<body>
+  <div class="dashboard-container">
+
+    <!-- Header -->
+    <header class="header">
+      <h2>TUBONGE !</h2>
+      <div class="header-actions">
+        {% if session['role'] == 'admin' %}
+          <a href="{{ url_for('settings') }}" class="admin-btn">
+            <i class="fa-solid fa-shield-halved"></i> Admin
+          </a>
+        {% endif %}
+        <a href="{{ url_for('logout') }}" class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+        </a>
+      </div>
+    </header>
+
+    <!-- Welcome -->
+    <section class="welcome">
+      <h3>Welcome, {{ username }}!</h3>
+      <p>Choose a translation mode below to get started.</p>
+      <div class="status-card">
+        <p id="micStatus">Click "Translate language" to speak, or "Sign language" to use your webcam.</p>
+        <p id="transcriptOutput"></p>
+      </div>
+    </section>
+
+    <!-- Action buttons -->
+    <section class="quick-suggestions">
+      <button id="speechToTextBtn">
+        <i class="fa-solid fa-microphone"></i> Translate language
+      </button>
+      <button id="translateSLBtn">
+        <i class="fa-solid fa-hands"></i> Sign language
+      </button>
+    </section>
+
+    <!-- Sign language live area -->
+    <section class="sl-translation-area">
+      <div id="media-preview-container"></div>
+      <div id="slOutput">Sign language translation will appear here...</div>
+    </section>
+
+    <!-- Bottom nav -->
+    <nav class="bottom-nav">
+      <a href="{{ url_for('landing') }}" class="active">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="https://www.reddit.com/r/HandTalkers/" target="_blank">
+        <i class="fa-solid fa-users"></i>
+        <span>Community</span>
+      </a>
+      <a href="{{ url_for('settings') }}">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings</span>
+      </a>
+      <a href="{{ url_for('user_manual') }}">
+        <i class="fa-solid fa-book"></i>
+        <span>Help</span>
+      </a>
+
+    </nav>    
+
+  </div>
+
+  <!-- Webcam source modal -->
+  <div id="slSourceModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <button id="closeModalBtn" class="modal-close-btn">&times;</button>
+      <h3>Sign Language Translator</h3>
+      <p>Start your webcam — hold any gesture steady and the app translates it automatically.</p>
+      <div class="modal-actions">
+        <button id="useWebcamBtn" class="modal-btn">
+          <i class="fa-solid fa-camera"></i>
+          Start live webcam
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen result overlay -->
+  <div id="fullscreen-text-modal" class="fullscreen-overlay" style="display: none;">
+    <span id="close-fullscreen-text-btn" class="fullscreen-close-btn">&times;</span>
+    <div class="fullscreen-text-content">
+      <p id="fullscreen-text-p"></p>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
